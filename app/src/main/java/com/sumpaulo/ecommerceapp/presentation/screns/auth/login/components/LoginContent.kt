@@ -149,7 +149,7 @@ fun LoginContent(navController: NavHostController, paddingValues: PaddingValues,
                             .height(50.dp),
                         text="LOGIN",
                         onClick = {
-                            viewModel.validateForm()
+                            viewModel.login()
                         }
 
                         )
