@@ -12,10 +12,10 @@ class AuthRepositoryImpl(private val authRemoteDataSource: AuthRemoteDataSource)
     ): Response<User> {
       return try {
         val result = authRemoteDataSource.login(email, password)
-          Response.Success(result.body()!!)
+         return Response.Success(result.body()!!)
       }catch (e: Exception){
           e.printStackTrace()
-          Response.Failure(e)
+        return Response.Failure(e)
       }
     }
 }
