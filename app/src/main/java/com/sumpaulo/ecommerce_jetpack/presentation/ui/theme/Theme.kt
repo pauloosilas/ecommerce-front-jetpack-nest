@@ -1,6 +1,5 @@
-package com.sumpaulo.ecommerce_jetpack.ui.theme
+package com.sumpaulo.ecommerce_jetpack.presentation.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -18,8 +17,8 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
+    primary = Blue500,
+    secondary = Blue700,
     tertiary = Pink40
 
     /* Other default colors to override
