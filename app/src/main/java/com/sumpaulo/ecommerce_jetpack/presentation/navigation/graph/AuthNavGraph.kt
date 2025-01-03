@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.sumpaulo.ecommerce_jetpack.presentation.navigation.Graph
 import com.sumpaulo.ecommerce_jetpack.presentation.navigation.screen.AuthScreen
+import com.sumpaulo.ecommerce_jetpack.presentation.screens.Home.HomeScreen
 import com.sumpaulo.ecommerce_jetpack.presentation.screens.auth.login.LoginScreen
 import com.sumpaulo.ecommerce_jetpack.presentation.screens.auth.register.RegisterScreen
 
@@ -19,7 +20,11 @@ fun NavGraphBuilder.AuthNavGraph(navController: NavHostController){
         }
 
         composable(route = AuthScreen.Register.route){
-            RegisterScreen()
+            RegisterScreen(navController)
+        }
+
+        composable(route = AuthScreen.Home.route){
+            HomeScreen(navController)
         }
     }
 }

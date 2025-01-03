@@ -55,6 +55,7 @@ fun LoginContent(paddingValues: PaddingValues, navController: NavHostController,
     LaunchedEffect(key1 = viewModel.errorMessage) {
         if(viewModel.errorMessage != ""){
             Toast.makeText(context, viewModel.errorMessage, Toast.LENGTH_LONG).show()
+            viewModel.errorMessage = ""
         }
     }
 

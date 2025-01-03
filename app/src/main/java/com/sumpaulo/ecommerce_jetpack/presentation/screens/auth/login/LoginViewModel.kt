@@ -9,8 +9,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sumpaulo.ecommerce_jetpack.domain.model.AuthResponse
-import com.sumpaulo.ecommerce_jetpack.domain.model.User
-import com.sumpaulo.ecommerce_jetpack.domain.util.Response
+import com.sumpaulo.ecommerce_jetpack.domain.util.Resource
 import com.sumpaulo.ecommerce_jetpack.domain.useCase.auth.AuthUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -24,15 +23,14 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): 
         private set
 
     var errorMessage by mutableStateOf("")
-        private set
 
     //LOGIN RESPONSE
-    var loginResponse by mutableStateOf<Response<AuthResponse>?>(null)
+    var loginResponse by mutableStateOf<Resource<AuthResponse>?>(null)
     private set
 
     fun login() = viewModelScope.launch{
         if(isValidForm()){
-            loginResponse = Response.Loading
+            loginResponse = Resource.Loading
             val result = authUseCase.login(state.email, state.password)
             loginResponse = result
             Log.d("LoginViewModel", "Response: ${loginResponse}")

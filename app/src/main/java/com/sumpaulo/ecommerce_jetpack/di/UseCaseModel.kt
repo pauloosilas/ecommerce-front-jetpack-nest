@@ -6,6 +6,7 @@ import com.sumpaulo.ecommerce_jetpack.data.service.AuthService
 import com.sumpaulo.ecommerce_jetpack.domain.repository.AuthRepository
 import com.sumpaulo.ecommerce_jetpack.domain.useCase.auth.AuthUseCase
 import com.sumpaulo.ecommerce_jetpack.domain.useCase.auth.LoginUseCase
+import com.sumpaulo.ecommerce_jetpack.domain.useCase.auth.RegisterUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,6 +20,7 @@ object UseCaseModel {
     @Provides
     @Singleton
    fun  provideAuthUseCase(authRepository: AuthRepository) = AuthUseCase(
-       login = LoginUseCase(authRepository)
+       login = LoginUseCase(authRepository),
+       register = RegisterUseCase(authRepository)
    )
 }

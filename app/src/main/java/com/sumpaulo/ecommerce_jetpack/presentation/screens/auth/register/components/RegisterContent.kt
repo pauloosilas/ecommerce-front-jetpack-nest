@@ -57,6 +57,7 @@ fun RegisterContent(paddingValues: PaddingValues, viewModel: RegisterViewModel =
     LaunchedEffect(key1 = viewModel.errorMessage) {
         if (viewModel.errorMessage != "") {
             Toast.makeText(context, viewModel.errorMessage, Toast.LENGTH_LONG).show()
+            viewModel.errorMessage = ""
         }
     }
 
@@ -193,7 +194,7 @@ fun RegisterContent(paddingValues: PaddingValues, viewModel: RegisterViewModel =
                             .fillMaxWidth()
                             .height(50.dp),
                         text = "CONFIRMAR",
-                        onClick = { viewModel.validateForm()}
+                        onClick = { viewModel.register()}
                     )
                 }
             }
