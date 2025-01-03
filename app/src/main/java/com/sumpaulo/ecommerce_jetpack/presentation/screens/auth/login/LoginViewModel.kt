@@ -8,11 +8,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.sumpaulo.ecommerce_jetpack.domain.model.AuthResponse
 import com.sumpaulo.ecommerce_jetpack.domain.model.User
 import com.sumpaulo.ecommerce_jetpack.domain.util.Response
 import com.sumpaulo.ecommerce_jetpack.domain.useCase.auth.AuthUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -27,7 +27,7 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): 
         private set
 
     //LOGIN RESPONSE
-    var loginResponse by mutableStateOf<Response<User>?>(null)
+    var loginResponse by mutableStateOf<Response<AuthResponse>?>(null)
     private set
 
     fun login() = viewModelScope.launch{

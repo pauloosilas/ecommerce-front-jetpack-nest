@@ -1,7 +1,7 @@
 package com.sumpaulo.ecommerce_jetpack.data.repository
 
 import com.sumpaulo.ecommerce_jetpack.data.repository.dataSource.AuthRemoteDataSource
-import com.sumpaulo.ecommerce_jetpack.domain.model.User
+import com.sumpaulo.ecommerce_jetpack.domain.model.AuthResponse
 import com.sumpaulo.ecommerce_jetpack.domain.repository.AuthRepository
 import com.sumpaulo.ecommerce_jetpack.domain.util.Response
 
@@ -9,7 +9,7 @@ class AuthRepositoryImpl(private val authRemoteDataSource: AuthRemoteDataSource)
     override suspend fun login(
         email: String,
         password: String
-    ): Response<User> {
+    ): Response<AuthResponse> {
 
         return try {
             val result = authRemoteDataSource.login(email, password)

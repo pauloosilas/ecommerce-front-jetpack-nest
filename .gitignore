@@ -1,6 +1,6 @@
 *.iml
 .gradle
-Config.kt
+./core
 /local.properties
 /.idea/caches
 /.idea/libraries
