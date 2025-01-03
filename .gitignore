@@ -4,6 +4,7 @@
 ./core/Config.kt
 Config.kt
 ./Config.kt
+/Config.kt
 /local.properties
 /.idea/caches
 /.idea/libraries
