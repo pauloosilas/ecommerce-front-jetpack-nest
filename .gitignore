@@ -1,6 +1,9 @@
 *.iml
 .gradle
-./core
+.app/src/main/com/sumpaulo/ecommerce_jetpack/core/Config.kt
+./core/Config.kt
+Config.kt
+./Config.kt
 /local.properties
 /.idea/caches
 /.idea/libraries
