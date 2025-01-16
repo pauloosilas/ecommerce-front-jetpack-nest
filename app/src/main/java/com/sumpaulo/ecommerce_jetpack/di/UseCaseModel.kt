@@ -5,8 +5,11 @@ import com.sumpaulo.ecommerce_jetpack.data.repository.dataSourceImpl.AuthRemoteD
 import com.sumpaulo.ecommerce_jetpack.data.service.AuthService
 import com.sumpaulo.ecommerce_jetpack.domain.repository.AuthRepository
 import com.sumpaulo.ecommerce_jetpack.domain.useCase.auth.AuthUseCase
+import com.sumpaulo.ecommerce_jetpack.domain.useCase.auth.GetSessionDataUseCase
 import com.sumpaulo.ecommerce_jetpack.domain.useCase.auth.LoginUseCase
+import com.sumpaulo.ecommerce_jetpack.domain.useCase.auth.LogoutUseCase
 import com.sumpaulo.ecommerce_jetpack.domain.useCase.auth.RegisterUseCase
+import com.sumpaulo.ecommerce_jetpack.domain.useCase.auth.SaveSessionUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,9 +21,11 @@ import javax.inject.Singleton
 object UseCaseModel {
 
     @Provides
-    @Singleton
    fun  provideAuthUseCase(authRepository: AuthRepository) = AuthUseCase(
        login = LoginUseCase(authRepository),
-       register = RegisterUseCase(authRepository)
+       register = RegisterUseCase(authRepository),
+       saveSession = SaveSessionUseCase(authRepository),
+       getSessionData = GetSessionDataUseCase(authRepository),
+       logout = LogoutUseCase(authRepository)
    )
 }

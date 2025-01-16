@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.sumpaulo.ecommerce_jetpack.presentation.navigation.graph.RootNavGraph
+import com.sumpaulo.ecommerce_jetpack.presentation.navigation.graph.root.RootNavGraph
 import com.sumpaulo.ecommerce_jetpack.presentation.ui.theme.EcommercejetpackTheme
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -42,7 +42,7 @@ import androidx.navigation.NavHostController
 import com.sumpaulo.ecommerce_jetpack.R
 import com.sumpaulo.ecommerce_jetpack.presentation.components.DefaultButton
 import com.sumpaulo.ecommerce_jetpack.presentation.components.DefaultTextField
-import com.sumpaulo.ecommerce_jetpack.presentation.navigation.screen.AuthScreen
+import com.sumpaulo.ecommerce_jetpack.presentation.navigation.screen.auth.AuthScreen
 import com.sumpaulo.ecommerce_jetpack.presentation.screens.auth.login.LoginViewModel
 
 

@@ -43,6 +43,9 @@ class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase
         private set
 
 
+    fun saveSession(authResponse: AuthResponse) = viewModelScope.launch {
+        authUseCase.saveSession(authResponse)
+    }
 
     var errorMessage by mutableStateOf("")
 

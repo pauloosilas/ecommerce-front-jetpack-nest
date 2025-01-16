@@ -1,12 +1,11 @@
-package com.sumpaulo.ecommerce_jetpack.presentation.navigation.graph
+package com.sumpaulo.ecommerce_jetpack.presentation.navigation.graph.auth
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.sumpaulo.ecommerce_jetpack.presentation.navigation.Graph
-import com.sumpaulo.ecommerce_jetpack.presentation.navigation.screen.AuthScreen
-import com.sumpaulo.ecommerce_jetpack.presentation.screens.Home.HomeScreen
+import com.sumpaulo.ecommerce_jetpack.presentation.navigation.screen.auth.AuthScreen
 import com.sumpaulo.ecommerce_jetpack.presentation.screens.auth.login.LoginScreen
 import com.sumpaulo.ecommerce_jetpack.presentation.screens.auth.register.RegisterScreen
 
@@ -23,8 +22,7 @@ fun NavGraphBuilder.AuthNavGraph(navController: NavHostController){
             RegisterScreen(navController)
         }
 
-        composable(route = AuthScreen.Home.route){
-            HomeScreen(navController)
-        }
+
+
     }
 }

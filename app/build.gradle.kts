@@ -65,6 +65,15 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:2.5.0")
     kapt("androidx.room:room-compiler:2.5.0")
 
+    //DATASTORE
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
+
+    //Async image
+    implementation("io.coil-kt:coil-compose:2.2.2")
+
+    //material
+    implementation("androidx.compose.material:material:1.2.0")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

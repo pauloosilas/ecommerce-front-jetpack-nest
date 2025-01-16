@@ -1,9 +1,11 @@
-package com.sumpaulo.ecommerce_jetpack.presentation.navigation.graph
+package com.sumpaulo.ecommerce_jetpack.presentation.navigation.graph.root
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.sumpaulo.ecommerce_jetpack.presentation.navigation.Graph
+import com.sumpaulo.ecommerce_jetpack.presentation.navigation.graph.auth.AuthNavGraph
+import com.sumpaulo.ecommerce_jetpack.presentation.navigation.graph.roles.RolesNavGraph
 
 @Composable
 fun RootNavGraph(navController: NavHostController){
@@ -14,5 +16,7 @@ fun RootNavGraph(navController: NavHostController){
     )
     {
         AuthNavGraph(navController = navController)
+        RolesNavGraph(navController = navController)
+
     }
 }
