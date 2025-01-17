@@ -163,7 +163,7 @@ fun ProfileUpdateContent(navController:NavHostController, paddingValues: Padding
                        DefaultButton(
                            modifier = Modifier.fillMaxWidth(),
                            text="Confirmar",
-                           onClick = {}
+                           onClick = {viewModel.update()}
                        )
                    }
                 }

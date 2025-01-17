@@ -140,7 +140,7 @@ fun ProfileContent(paddingValues: PaddingValues, navController: NavHostControlle
                                contentDescription = ""
                            )
                            Column(modifier = Modifier.padding(horizontal = 5.dp)) {
-                               Text(text= "${viewModel.user?.name} ${viewModel.user?.name} ")
+                               Text(text= "${viewModel.user?.name} ${viewModel.user?.lastname} ")
                                Text(text = "Nome de Usuário",
                                    fontSize = 12.sp,
                                    color = Color.Gray)

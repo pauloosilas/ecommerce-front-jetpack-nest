@@ -13,6 +13,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import com.sumpaulo.ecommerce_jetpack.domain.model.User
+import com.sumpaulo.ecommerce_jetpack.domain.useCase.user.UserUseCase
+import com.sumpaulo.ecommerce_jetpack.domain.util.Resource
+import com.sumpaulo.ecommerce_jetpack.presentation.screens.profile.update.mapper.toUser
 import com.sumpaulo.ecommerce_jetpack.presentation.util.ComposeFileProvider
 import com.sumpaulo.ecommerce_jetpack.presentation.util.ResultingActivityHandler
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -21,6 +24,7 @@ import java.io.File
 @HiltViewModel
 class ProfileUpdateViewModel @Inject constructor(
     private val authUseCase: AuthUseCase,
+    private val userUseCase: UserUseCase,
     private val savedStateHandle: SavedStateHandle,
     @ApplicationContext private val context: Context
 ): ViewModel() {
@@ -31,13 +35,16 @@ class ProfileUpdateViewModel @Inject constructor(
     //Argumentos
 
     val data = savedStateHandle.get<String>("user")
-    val user = User.fromJson(data!!)
+    var user = User.fromJson(data!!)
 
 
     //imagens
     var file: File? = null;
     val resultActivityHandler = ResultingActivityHandler()
 
+
+    var updateResponse by mutableStateOf<Resource<User>?>(null)
+    private set
 
     init{
         state = state.copy(
@@ -46,6 +53,27 @@ class ProfileUpdateViewModel @Inject constructor(
             phone = user.phone,
             image = user.image ?: ""
         )
+    }
+
+    fun update() = viewModelScope.launch {
+//
+//        val userData = User(
+//            name = state.name,
+//            lastname = state.lastname,
+//            phone = state.phone
+//        )
+
+//        user.name = state.name
+//        user.lastname = user.lastname
+//        user.phone = user.phone
+
+        updateResponse = Resource.Loading;
+        val result = userUseCase.updateUser(user.id ?: "", state.toUser())
+        updateResponse = result
+    }
+
+    fun updateUseSession() = viewModelScope.launch {
+        authUseCase.updateSession(state.toUser())
     }
 
     fun pickImage() = viewModelScope.launch {

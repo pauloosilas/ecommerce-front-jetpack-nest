@@ -17,6 +17,7 @@ import javax.inject.Inject
 
 import com.sumpaulo.ecommerce_jetpack.domain.model.AuthResponse
 import com.sumpaulo.ecommerce_jetpack.domain.model.User
+import com.sumpaulo.ecommerce_jetpack.presentation.screens.auth.register.mapper.toUser
 
 @HiltViewModel
 class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase): ViewModel() {
@@ -26,15 +27,15 @@ class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase
 
     fun register() = viewModelScope.launch {
       if(isValidForm()){
-          val user = User(
-              name = state.name,
-              lastname = state.phone,
-              phone = state.phone,
-              email = state.email,
-              password = state.password
-          )
+//          val user = User(
+//              name = state.name,
+//              lastname = state.phone,
+//              phone = state.phone,
+//              email = state.email,
+//              password = state.password
+//          )
           registerResponse = Resource.Loading
-          val result = authUseCase.register(user)
+          val result = authUseCase.register(state.toUser())
           registerResponse = result //data ou error
       }
     }
