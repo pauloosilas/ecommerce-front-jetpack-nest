@@ -13,6 +13,7 @@ import com.sumpaulo.ecommerce_jetpack.domain.useCase.auth.RegisterUseCase
 import com.sumpaulo.ecommerce_jetpack.domain.useCase.auth.SaveSessionUseCase
 import com.sumpaulo.ecommerce_jetpack.domain.useCase.auth.UpdateSessionUseCase
 import com.sumpaulo.ecommerce_jetpack.domain.useCase.user.UpdateUserUseCase
+import com.sumpaulo.ecommerce_jetpack.domain.useCase.user.UpdateUserWithImageUseCase
 import com.sumpaulo.ecommerce_jetpack.domain.useCase.user.UserUseCase
 import dagger.Module
 import dagger.Provides
@@ -36,7 +37,8 @@ object UseCaseModel {
 
     @Provides
     fun provideUserUseCase(userRepository: UserRepository) = UserUseCase(
-        updateUser = UpdateUserUseCase(userRepository)
+        updateUser = UpdateUserUseCase(userRepository),
+        updateUserWithImage = UpdateUserWithImageUseCase(userRepository)
     )
 
 }

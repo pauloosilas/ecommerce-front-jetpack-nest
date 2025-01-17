@@ -72,8 +72,9 @@ class ProfileUpdateViewModel @Inject constructor(
         updateResponse = result
     }
 
-    fun updateUseSession() = viewModelScope.launch {
-        authUseCase.updateSession(state.toUser())
+    fun updateUseSession(userResponse: User) = viewModelScope.launch {
+      authUseCase.updateSession(userResponse)
+    //  authUseCase.updateSession(state.toUser())
     }
 
     fun pickImage() = viewModelScope.launch {
@@ -92,11 +93,27 @@ class ProfileUpdateViewModel @Inject constructor(
         }
     }
 
+    fun updateWithImage() = viewModelScope.launch {
+        updateResponse = Resource.Loading
+        val result = userUseCase.updateUserWithImage(user.id ?: "", state.toUser(), file!!)
+        updateResponse = result
+    }
+
+
+    fun onUpdate(){
+        if(file != null){
+            updateWithImage()
+            return
+        }
+        update()
+    }
+
     fun onNameInput(input:String){
         state = state.copy(
             name = input
         )
     }
+
 
     fun onLastnameInput(input:String){
         state = state.copy(

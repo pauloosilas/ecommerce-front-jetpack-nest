@@ -13,6 +13,7 @@ import com.sumpaulo.ecommerce_jetpack.domain.util.Resource
 import com.sumpaulo.ecommerce_jetpack.domain.util.ResponseToRequest
 import kotlinx.coroutines.flow.Flow
 import retrofit2.HttpException
+import java.io.File
 import java.io.IOException
 
 class UserRepositoryImpl(
@@ -23,6 +24,14 @@ class UserRepositoryImpl(
         ResponseToRequest.send(
             userRemoteDataSource.update(id, user)
         )
+
+    override suspend fun updateWithImage(
+        id: String,
+        user: User,
+        file: File
+    ) = ResponseToRequest.send(
+        userRemoteDataSource.updateWithImage(id, user,file)
+    )
 
 
 }
