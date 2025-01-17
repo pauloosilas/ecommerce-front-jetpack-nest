@@ -3,6 +3,7 @@ package com.sumpaulo.ecommerce_jetpack.presentation.screens.profile.update.compo
 import android.app.Activity
 import android.content.Intent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -28,6 +29,8 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -49,12 +52,22 @@ import com.sumpaulo.ecommerce_jetpack.R
 import com.sumpaulo.ecommerce_jetpack.presentation.MainActivity
 import com.sumpaulo.ecommerce_jetpack.presentation.components.DefaultButton
 import com.sumpaulo.ecommerce_jetpack.presentation.components.DefaultTextField
+import com.sumpaulo.ecommerce_jetpack.presentation.components.DialogCapturePicture
 import com.sumpaulo.ecommerce_jetpack.presentation.screens.profile.update.ProfileUpdateViewModel
 
 @Composable
 fun ProfileUpdateContent(navController:NavHostController, paddingValues: PaddingValues, viewModel: ProfileUpdateViewModel = hiltViewModel()){
     val activity = LocalContext.current as? Activity
     val state = viewModel.state
+    val stateDialog = remember { mutableStateOf(false) }
+
+    viewModel.resultActivityHandler.handle()
+
+    DialogCapturePicture(
+        state = stateDialog,
+        takePhoto = { viewModel.takePhoto() },
+        pickImage = { viewModel.pickImage() }
+    )
 
     Box(modifier = Modifier
         .padding(paddingValues = paddingValues)
@@ -80,7 +93,8 @@ fun ProfileUpdateContent(navController:NavHostController, paddingValues: Padding
                         .padding(top=40.dp)
                         .size(150.dp)
                         .clip(CircleShape)
-                        .align(Alignment.CenterHorizontally),
+                        .align(Alignment.CenterHorizontally)
+                        .clickable{ stateDialog.value = true},
                     model = state.image,
                     contentDescription="",
                     contentScale = ContentScale.Crop
@@ -91,7 +105,8 @@ fun ProfileUpdateContent(navController:NavHostController, paddingValues: Padding
                         .padding(top=40.dp)
                         .size(150.dp)
                         .clip(CircleShape)
-                        .align(Alignment.CenterHorizontally),
+                        .align(Alignment.CenterHorizontally)
+                        .clickable{ stateDialog.value = true},
                     painter =  painterResource(id = R.drawable.user_image),
                     contentDescription = "",
                  )

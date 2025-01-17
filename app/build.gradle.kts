@@ -74,6 +74,9 @@ dependencies {
     //material
     implementation("androidx.compose.material:material:1.2.0")
 
+    //FILES TRANSFORMATION
+    implementation("commons-io:commons-io:2.7")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
