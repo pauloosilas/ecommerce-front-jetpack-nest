@@ -1,10 +1,13 @@
 package com.sumpaulo.ecommerce_jetpack.di
 
 import com.sumpaulo.ecommerce_jetpack.data.repository.dataSource.AuthRemoteDataSource
+import com.sumpaulo.ecommerce_jetpack.data.repository.dataSource.CategoriesRemoteDataSource
 import com.sumpaulo.ecommerce_jetpack.data.repository.dataSource.UserRemoteDataSource
 import com.sumpaulo.ecommerce_jetpack.data.repository.dataSourceImpl.AuthRemoteDataSourceImpl
+import com.sumpaulo.ecommerce_jetpack.data.repository.dataSourceImpl.CategoriesRemoteDataSourceImpl
 import com.sumpaulo.ecommerce_jetpack.data.repository.dataSourceImpl.UserRemoteDataSourceImpl
 import com.sumpaulo.ecommerce_jetpack.data.service.AuthService
+import com.sumpaulo.ecommerce_jetpack.data.service.CategoriesService
 import com.sumpaulo.ecommerce_jetpack.data.service.UserService
 import dagger.Module
 import dagger.Provides
@@ -22,4 +25,8 @@ object RemoteDataModel {
     @Provides
     fun provideUserRemoteDataSource(userService: UserService): UserRemoteDataSource =
         UserRemoteDataSourceImpl(userService)
+
+    @Provides
+    fun provideCategoryRemoteDataSource(categoryService: CategoriesService): CategoriesRemoteDataSource =
+        CategoriesRemoteDataSourceImpl(categoryService)
 }

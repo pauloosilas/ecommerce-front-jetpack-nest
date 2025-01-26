@@ -3,6 +3,7 @@ package com.sumpaulo.ecommerce_jetpack.di
 import com.sumpaulo.ecommerce_jetpack.core.Config
 import com.sumpaulo.ecommerce_jetpack.data.datastore.AuthDataStore
 import com.sumpaulo.ecommerce_jetpack.data.service.AuthService
+import com.sumpaulo.ecommerce_jetpack.data.service.CategoriesService
 import com.sumpaulo.ecommerce_jetpack.data.service.UserService
 import dagger.Module
 import dagger.Provides
@@ -52,5 +53,11 @@ object NetworkModule {
     @Singleton
     fun provideUserService(retrofit: Retrofit): UserService {
         return retrofit.create(UserService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCategoriesService(retrofit: Retrofit): CategoriesService {
+        return retrofit.create(CategoriesService::class.java)
     }
 }
